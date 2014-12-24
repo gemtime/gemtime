@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :previewer, only: [:show]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
   # GET /posts
   def index
@@ -71,8 +72,20 @@ class PostsController < ApplicationController
     end
 
     def correct_user
-      @application = current_user.posts.find_by(id: params[:id])
+      @post = current_user.posts.find_by(id: params[:id])
       redirect_to posts_path, notice: "Not authorized to edit this post" if @post.nil?
+    end
+
+    def previewer
+      if @post.published_at.blank?
+        if user_signed_in?
+          @post = current_user.posts.find_by(id: params[:id])
+          redirect_to posts_path, notice: "Not authorized to view this post" if @post.nil?
+        else
+          redirect_to posts_path, notice: "Not authorized to view this post"
+        end
+      else
+      end
     end
 
     def post_params

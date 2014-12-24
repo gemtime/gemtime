@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <% if @post.published_at? %>
+  <% else %>
+    <h4><span class="label label-default">Draft</span></h4>
+  <% end %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @post.name %>
 </p>
