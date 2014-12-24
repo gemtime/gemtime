@@ -1,26 +1,26 @@
 <h1>Listing posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @posts.each do |post| %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.name %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <h1><%= post.name %></h1>
+  <p><%= link_to 'Show', post %></p>
+  <p>
+    <% if current_user && post.user == current_user %>
+      <div class="actions">
+        <%= link_to edit_post_path(post) do %>
+          <i class="fa fa-pencil-square-o"></i>
+          Edit
+        <% end %>
+
+        <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash"></i>
+          Delete
+        <% end %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </p>
+
+<% end %>
 
 <br>
 
