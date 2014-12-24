@@ -13,6 +13,8 @@ gem 'spring',        group: :development
 
 # GT Dependencies
 gem 'devise'
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 
 # Environment Dependencies
 group :development, :test do
