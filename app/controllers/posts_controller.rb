@@ -24,6 +24,8 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = current_user.posts.build(post_params)
+    @post.published_at = Time.zone.now if publishing?
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -35,6 +37,9 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   def update
+    @post.published_at = Time.zone.now if publishing?
+    @post.published_at = nil if unpublishing?
+
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -55,6 +60,14 @@ class PostsController < ApplicationController
   private
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def publishing?
+      params[:commit] == "Publish"
+    end
+
+    def unpublishing?
+      params[:commit] == "Unpublish"
     end
 
     def correct_user
