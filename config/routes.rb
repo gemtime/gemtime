@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :posts
+
   # Root
   root to: 'pages#home'
 
