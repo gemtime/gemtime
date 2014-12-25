@@ -1,54 +1,58 @@
 <div class="jumbotron">
-  <h1 class="center">Supercharge your Rails skills</h1>
-  <p>RubyTapas is for the busy Ruby or Rails developer who is ready to reach the next level of code mastery.
-    Short screencasts twice a week will introduce you to a wide variety of intermediate to advanced Ruby concepts and techniques, as well as core Object-Oriented design principles.</p>
+  <div class="container">
+    <h1 class="center">Supercharge your Rails skills</h1>
+    <p>RubyTapas is for the busy Ruby or Rails developer who is ready to reach the next level of code mastery.
+      Short screencasts twice a week will introduce you to a wide variety of intermediate to advanced Ruby concepts and techniques, as well as core Object-Oriented design principles.</p>
+  </div><!-- .container -->
 </div><!-- .jumbotron -->
-<div id="posts" class="row">
+<div class="container">
+  <div id="posts" class="row">
 
-  <div class="col-sm-2 paddingTop40">
-    <br>
-    <nav class="nav-sidebar">
-        <ul class="nav">
-            <li class="active"><a href="javascript:;"><span class="glyphicon glyphicon-star"></span> All</a></li>
+    <div class="col-sm-2 paddingTop40">
+      <br>
+      <nav class="nav-sidebar">
+          <ul class="nav">
+              <li class="active"><a href="javascript:;"><span class="glyphicon glyphicon-star"></span> All</a></li>
 
-            <!-- Implement below with tagging -->
+              <!-- Implement below with tagging -->
 
-            <!--<li><a href="javascript:;">Latest news</a></li>
-            <li><a href="javascript:;">Updates</a></li>
-            <li><a href="javascript:;">Training</a></li>
-            <li><a href="javascript:;">Nutrition</a></li>
-            <li><a href="javascript:;">Proteins</a></li>
-            <li><a href="javascript:;">Recipes</a></li>
-            <li><a href="javascript:;">Challenge</a></li>
-            <li class="nav-divider"></li>
-            <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>-->
-        </ul>
-    </nav>
-    <div><h2 class="add">Place for your add!</h2></div>
-  </div><!-- .col-sm-2 paddingTop20 -->
+              <!--<li><a href="javascript:;">Latest news</a></li>
+              <li><a href="javascript:;">Updates</a></li>
+              <li><a href="javascript:;">Training</a></li>
+              <li><a href="javascript:;">Nutrition</a></li>
+              <li><a href="javascript:;">Proteins</a></li>
+              <li><a href="javascript:;">Recipes</a></li>
+              <li><a href="javascript:;">Challenge</a></li>
+              <li class="nav-divider"></li>
+              <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>-->
+          </ul>
+      </nav>
+      <div><h2 class="ad">Advertisement</h2></div>
+    </div><!-- .col-sm-2 paddingTop20 -->
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <% @posts.each do |post| %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <% @posts.each do |post| %>
 
-        <div class="col-md-10 blogShort">
-          <h1><%= link_to "#{post.name}", post %></h1>
-          <img src="http://www.kaczmarek-photo.com/wp-content/uploads/2012/06/guinnes-150x150.jpg" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
+          <div class="col-md-10 blogShort">
+            <h1><%= link_to "#{post.name}", post %></h1>
+            <img src="http://www.kaczmarek-photo.com/wp-content/uploads/2012/06/guinnes-150x150.jpg" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
 
-          <div><em>Episode <%= post.id %> · <!--%= post.published_at.strftime("%B %d, %Y") %>--> December 19, 2014</em></div>
-          <br>
-          <article>
-            <p><%= post.body %></p>
-          </article>
-           <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">READ MORE</a>
-        </div>
+            <div><em>Episode <%= post.id %> · <!--%= post.published_at.strftime("%B %d, %Y") %>--> December 19, 2014</em></div>
+            <br>
+            <article>
+              <p><%= post.body %></p>
+            </article>
+             <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">READ MORE</a>
+          </div>
 
-      <% end %>
+        <% end %>
 
-    <div class="col-md-12 gap10"></div>
-    </div>
+      <div class="col-md-12 gap10"></div>
+      </div>
 
 
-    </div><!-- .panel-body -->
-  </div><!-- .panel panel-default -->
-</div><!-- .row -->
+      </div><!-- .panel-body -->
+    </div><!-- .panel panel-default -->
+  </div><!-- .row -->
+</div><!-- .container -->
