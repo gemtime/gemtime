@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.where(published_at: nil).all
+    @posts = Post.order("published_at DESC").all
   end
 
   # GET /posts/1

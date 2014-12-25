@@ -1,8 +1,9 @@
 <div class="jumbotron">
   <div class="container">
     <h1 class="center">Supercharge your Rails skills</h1>
-    <p>RubyTapas is for the busy Ruby or Rails developer who is ready to reach the next level of code mastery.
-      Short screencasts twice a week will introduce you to a wide variety of intermediate to advanced Ruby concepts and techniques, as well as core Object-Oriented design principles.</p>
+    <br>
+    <p>GemTime is for Rails developers who want to learn the magic behind their favorite gems and concepts and reach the next level of code mastery.
+      Short posts once week provide an easy way to pickup new skills and concepts.</p>
   </div><!-- .container -->
 </div><!-- .jumbotron -->
 <div class="container">
@@ -38,8 +39,14 @@
             <h1><%= link_to "#{post.name}", post %></h1>
             <img src="http://www.kaczmarek-photo.com/wp-content/uploads/2012/06/guinnes-150x150.jpg" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
 
-            <div><em>Episode <%= post.id %> · <!--%= post.published_at.strftime("%B %d, %Y") %>--> December 19, 2014</em></div>
+            <div>
+              <em>
+                Episode <%= post.id %> · <% if post.published_at? %> <%= post.published_at.strftime("%B %d, %Y") %> <% end %>
+              </em>
+            </div>
+
             <br>
+
             <article>
               <p><%= post.body %></p>
             </article>

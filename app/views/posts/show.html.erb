@@ -1,59 +1,66 @@
 <% content_for :title, "#{@post.name}" %>
 
 <p id="notice"><%= notice %></p>
+<div class="jumbotron">
+  <div class="container">
 
-<p>
-  <% if @post.published_at? %>
-  <% else %>
-    <h4><span class="label label-default">Draft</span></h4>
-  <% end %>
-</p>
+    <p>
+      <% if @post.published_at? %>
+      <% else %>
+        <h4><span class="label label-default">Draft</span></h4>
+      <% end %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @post.name %>
-</p>
+    <h1 class="center"><%= @post.name %></h1>
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
+    <br>
 
-<% if @post.user == current_user %>
-  <%= link_to edit_post_path(@post) do %>
-    <i class="fa fa-pencil"></i>
-      Edit
-  <% end %>
-<% end %>
+    <p><%= @post.body %></p>
 
-<!-- Disqus Comment Count -->
-<script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-  var disqus_shortname = 'gemtime'; // required: replace example with your forum shortname
+    <% if @post.user == current_user %>
+      <%= link_to edit_post_path(@post) do %>
+        <i class="fa fa-pencil"></i>
+          Edit
+      <% end %>
 
-  /* * * DON'T EDIT BELOW THIS LINE * * */
-  (function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-  }());
-</script>
+      <%= link_to post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <i class="fa fa-trash"></i>
+          Delete
+      <% end %>
+    <% end %>
+
+    <!-- Disqus Comment Count -->
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'gemtime'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+      }());
+    </script>
 
 
-<!-- Disqus Thread -->
-<div id="disqus_thread"></div>
-  <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'gemtime'; // required: replace example with your forum shortname
+    <!-- Disqus Thread -->
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+          var disqus_shortname = 'gemtime'; // required: replace example with your forum shortname
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-  </noscript>
-</div>
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    <!-- .Disqus Thread -->
+
+  </div><!-- .container -->
+</div><!-- .jumbotron -->
