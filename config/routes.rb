@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :posts
-
   # Root
-  root to: 'pages#home'
+  root to: 'posts#index'
 
   # Pages
   get '/about' => 'pages#about'
@@ -11,8 +9,8 @@ Rails.application.routes.draw do
   # User Authentication
   devise_for :users
 
-
-
+  # Scaffolds
+  resources :posts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

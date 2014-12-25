@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = Post.where(published_at: nil).all
   end
 
   # GET /posts/1
@@ -89,6 +89,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:name, :body, :published_at)
+      params.require(:post).permit(:name, :body, :published_at, :user_id)
     end
 end
